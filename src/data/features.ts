@@ -1,4 +1,4 @@
-import { Zap, Shield, Heart, Coffee, Smile, Type, TabletSmartphone, CodeXml } from 'lucide-astro';
+import { Zap, Shield, Heart, Coffee, Smile, Type, TabletSmartphone, CodeXml, Ban, Handshake, UsersRound, Dumbbell, CloudSunRain } from 'lucide-astro';
 
 // Define the LucideIcon type based on the structure of Lucide icons
 type LucideIcon = typeof Zap;
@@ -20,34 +20,29 @@ export const featureLists: Record<string, FeatureList> = {
         id: 'main',
         features: [
             {
-                icon: Zap,
-                title: 'Lightning Fast Performance',
-                description: 'Optimized for speed and performance'
+                icon: Ban,
+                title: 'Free of Charge',
+                description: 'Never pay to workout, ever.'
             },
             {
-                icon: Shield,
-                title: 'SEO Optimized Structure',
-                description: 'Built with SEO best practices in mind'
+                icon: UsersRound,
+                title: 'Open to all Men',
+                description: 'No matter the man, you are welcome here.'
             },
             {
-                icon: TabletSmartphone,
-                title: 'Responsive by Default',
-                description: 'Mobile-friendly out of the box'
+                icon: CloudSunRain,
+                title: 'Held Outdoors',
+                description: 'Rain or Shine, Hot or Cold, we are out there.'
             },
             {
-                icon: Smile,
-                title: 'Easy Customization',
-                description: 'Customize the theme to your liking'
+                icon: Dumbbell,
+                title: 'Peer Led',
+                description: 'Rotating fashion of men leading each other.'
             },
             {
-                icon: Type,
-                title: 'TypeScript Support',
-                description: 'Built with TypeScript in mind'
-            },
-            {
-                icon: CodeXml,
-                title: 'Minimal Dependencies',
-                description: 'Keep your project lightweight'
+                icon: Handshake,
+                title: 'Ends with a CoT',
+                description: 'Always end with a Circle of Trust.'
             }
         ]
     },
