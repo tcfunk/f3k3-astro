@@ -4,8 +4,9 @@ import { Image } from 'astro:assets';
 
 interface HeroContent {
     title: string;
-    description: string;
-        buttons?: {
+    subtitle: string;
+    description: string[];
+    buttons?: {
         text: string;
         link: string;
         variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
@@ -13,6 +14,7 @@ interface HeroContent {
     }[];
     backgroundImage?: string | any; // Using any for now to handle both string paths and imported images
     overlayOpacity?: number; // Value between 0 and 1
+    overlayImage?: string | any;
 }
 
 interface Props {
@@ -31,7 +33,7 @@ const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
                 alt=""
                 width={1920}
                 height={1080}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover filter grayscale"
                 quality={70}
                 format="webp"
                 loading="eager"
@@ -44,9 +46,19 @@ const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
         </div>
     )}
 
-    <div class="site-container mx-auto px-4 py-large relative z-10 flex flex-col md:items-center md:justify-center md:text-center">
+    <div class="site-container mx-auto px-4 py-base relative z-10 flex flex-col md:items-center md:justify-center md:text-center">
+        {content.overlayImage && (
+            <Image
+                src={content.overlayImage}
+                alt="Three logos for the F3 Kankakee regions Legion, Scarif, and Rivendell"
+                quality={70}
+            />
+        )}
         <h1 class="text-white text-balance" data-aos="fade-up">{content.title}</h1>
-        <p class="text-white mt-2 text-balance" data-aos="fade-up" data-aos-delay="100">{content.description}</p>
+        <h3 class="text-white text-balance" data-aos="fade-up" data-aos-delay="50">{content.subtitle}</h3>
+        {content.description.map((line) => (
+            <p class="text-white mt-2 text-balance" data-aos="fade-up" data-aos-delay="100">{line}</p>
+        ))}
         {content.buttons && content.buttons.length > 0 && (
             <div class="flex flex-wrap gap-4 mt-8" data-aos="fade-up">
                 {content.buttons.map((button) => (

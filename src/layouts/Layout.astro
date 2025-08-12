@@ -55,6 +55,7 @@ const fullCanonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?display=swap&amp;family=Saira+Stencil+One:ital,wght@0,400;1,400&amp;family=Staatliches:ital,wght@0,400;1,400&amp;family=Wix+Madefor+Text:ital,wght@0,400;1,400&amp;family=Oxygen:ital,wght@0,400;1,400" rel="stylesheet" type="text/css">
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={fullCanonicalUrl} />
@@ -74,7 +75,7 @@ const fullCanonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
 		<slot />
 		<Footer footerCta={footerCta} />
 		<ThemeSwitcher />
-		
+
 		<script>
 			import AOS from 'aos';
 			AOS.init({

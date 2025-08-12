@@ -12,7 +12,8 @@ import CtaBanner from '@components/sections/CtaBanner.astro';
 import Faqs from '@components/sections/Faqs.astro';
 import { faqLists } from '@data/faqs';
 import RecentPosts from '@components/sections/RecentPosts.astro';
-import heroImage from '../assets/images/home/default-hero-2.jpg';
+import heroImage from '../assets/images/home/container01.jpg';
+// import overlayImage from '../assets/images/home/image03.png';
 import styleGuideImage from '../assets/images/home/developer.jpg';
 
 const seoTitle = "Modern, High-Performance Astro Theme";
@@ -21,7 +22,10 @@ const seoDescription = "A modern, high-performance Astro theme for developer por
 const heroContent = {
     title: 'F3 KANKAKEE',
     subtitle: 'Fitness • Fellowship • Faith',
-    description: 'F3 is a national network of free, peer-led workouts for men. We plant, grow and serve these groups to invigorate male community leadership.',
+    description: [
+        'F3 is a national network of free, peer-led workouts for men.',
+        'We plant, grow and serve these groups to invigorate male community leadership.',
+    ],
     buttons: [
         {
             text: 'Get Started',
@@ -35,7 +39,8 @@ const heroContent = {
         }
     ],
     backgroundImage: heroImage,
-    overlayOpacity: 0.2
+    overlayOpacity: 0.2,
+    // overlayImage: overlayImage,
 }
 
 const featuresSection = {
