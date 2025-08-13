@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import CategoryPill from '@components/ui/CategoryPill.astro';
 import Date from '@components/ui/Date.astro';
 import { Image } from 'astro:assets';
+import { getTextColor } from '@utils/styleUtils';
 
 export async function getStaticPaths() {
     const posts = await getCollection('blog');
@@ -19,6 +20,8 @@ const { Content } = await render(post);
 // Use SEO data from frontmatter if available, fallback to regular post data
 const seoTitle = post.data.seo?.title || post.data.title;
 const seoDescription = post.data.seo?.description || post.data.excerpt;
+
+const heroTextColor = getTextColor('dark');
 
 // For SEO image, use the seo.image if provided, otherwise use the featured image
 // The Layout component expects a string for the image, so we need to handle that
@@ -58,8 +61,8 @@ else if (!seoImage && post.data.featuredImage) {
 
     <article class="site-container--small mx-auto px-4 prose relative z-10 pb-base">
         <div class="mt-42 mb-12 text-center">
-            <h1>{post.data.title}</h1>
-            <div class="flex items-center justify-center gap-4 text-gray-600">
+            <h1 class:list={[heroTextColor]}>{post.data.title}</h1>
+            <div class:list={[heroTextColor, "flex items-center justify-center gap-4"]}>
                 <Date date={post.data.publishDate} />
                 {
                     post.data.categories && (

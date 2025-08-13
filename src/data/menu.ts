@@ -4,14 +4,11 @@ export const headerMenu = [
     { name: 'Theme Info', link: '/theme-info' },
     { name: 'Our Team', link: '/team' },
     { name: 'Blog', link: '/blog' },
-    { name: 'Style-Guide', link: '/style-guide', showArrow: false,
+    { name: 'Locations', link: '/ao', showArrow: true,
         children: [
-            { name: 'Typography', link: '/style-guide#typography' },
-            { name: 'Colors', link: '/style-guide#colors' },
-            { name: 'Links', link: '/style-guide#links' },
-            { name: 'Buttons', link: '/style-guide#buttons' },
-            { name: 'Forms', link: '/style-guide#forms' },
-            { name: 'Lists', link: '/style-guide#lists' },
+            { name: 'Legion', link: '/ao/legion' },
+            { name: 'Rivendell', link: '/ao/rivendell' },
+            { name: 'Scarif', link: '/ao/scarif' },
         ]
     }
 ];

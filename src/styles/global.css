@@ -82,7 +82,8 @@
     --font-bruno-ace: 'Bruno Ace SC', sans-serif;
     --font-noto-sans-kr: "Noto Sans KR", sans-serif;
     --font-base: 'Noto Sans KR', sans-serif;
-    --font-logo: 'Bruno Ace SC', sans-serif;
+    /* --font-logo: 'Bruno Ace SC', sans-serif; */
+    --font-logo: 'Saira Stencil One', sans-serif;
     --font-headline: 'Staatliches', sans-serif;
     --font-display: 'Saira Stencil One', sans-serif;
 }
@@ -283,8 +284,8 @@
         --color-headline: #ffffff;
         --color-headline-light: #ffffff;
         --color-headline-dark: #ffffff;
-        --color-body-base: #ffffff;
-        --color-body-light: #ffffff;
+        --color-body-base: #333333;
+        --color-body-light: #333333;
         --color-body-dark: #ffffff;
         --color-eyebrow: #ff4d4d;
         --color-eyebrow-light: #ff4d4d;
@@ -494,6 +495,8 @@
     .py-small { padding-top: var(--spacing-small); padding-bottom: var(--spacing-small); }
     .py-base { padding-top: var(--spacing-base); padding-bottom: var(--spacing-base); }
     .py-large { padding-top: var(--spacing-large); padding-bottom: var(--spacing-large); }
+
+    .text-inverse { color: var(--color-secondary-dark); }
 
     .cursor-pointer { cursor: pointer; }
 }
