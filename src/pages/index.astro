@@ -22,10 +22,6 @@ const seoDescription = "A modern, high-performance Astro theme for developer por
 const heroContent = {
     title: 'F3 KANKAKEE',
     subtitle: 'Fitness • Fellowship • Faith',
-    description: [
-        'F3 is a national network of free, peer-led workouts for men.',
-        'We plant, grow and serve these groups to invigorate male community leadership.',
-    ],
     buttons: [
         {
             text: 'Get Started',
@@ -139,7 +135,12 @@ const recentPostsSection = {
 ---
 
 <Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
-    <Hero content={heroContent} />
+    <Hero content={heroContent}>
+        <p slot="description" class="text-white mt-2 text-balance" data-aos="fade-up" data-aos-delay="100">
+            F3 is a national network of free, peer-led workouts for men.<br />
+            We plant, grow and serve these groups to invigorate male community leadership.
+        </p>
+    </Hero
     <Features content={featuresSection} padding="base" background="light" />
     <RecentPosts content={recentPostsSection} background="base" padding="base" postsToShow={3} category="Theme Usage"/>
     <SplitPanel content={styleGuideSection} imagePosition="right" background="light" padding="base" />
