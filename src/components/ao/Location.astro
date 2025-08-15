@@ -1,0 +1,66 @@
+---
+import { categories } from '../../data/categories';
+import HashtagCategory from '../ui/HashtagCategory.astro';
+
+interface Props {
+    title: string;
+    featuredImage: any; // Changed to accept ImageMetadata from content collections
+    categories: string[];
+    slug?: string;
+    index: number;
+    address: string;
+    addressDescription: string;
+}
+
+const {
+    title,
+    slug,
+    index,
+    address,
+    addressDescription,
+    categories: locationCategories,
+} = Astro.props;
+
+// Validate categories against the valid categories
+const validCategories = locationCategories.filter((categoryName: string) =>
+    categories.some((category) => category.name === categoryName),
+);
+---
+<a
+    href={`/ao/${slug}`}
+    class="group flex flex-col h-full overflow-hidden bg-white rounded-lg border border-black transition-all duration-300 hover:border-primary"
+    data-aos="fade-up"
+    data-aos-delay={index * 100}
+>
+    <div
+        class="relative aspect-[16/9] overflow-hidden border-black border-b group-hover:border-primary transition-colors duration-300"
+    >
+    </div>
+
+    <div class="py-4 px-4 flex flex-col flex-grow relative">
+
+        <h2 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
+            {title}
+        </h2>
+
+        <p
+            class="mt-2 mb-8 text-body-base line-clamp-4 flex-grow text-small group-hover:text-gray-700 transition-colors duration-300"
+        >
+            {addressDescription}
+            <br />
+            {address}
+        </p>
+
+        {/* Categories as hashtags at the bottom */}
+        <div class="absolute bottom-4 left-4 flex flex-wrap">
+            {
+                validCategories.map((categoryName) => (
+                    <div class="category-tag">
+                        <HashtagCategory category={categoryName} />
+                    </div>
+                ))
+            }
+        </div>
+
+    </div>
+</a>

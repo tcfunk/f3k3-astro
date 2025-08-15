@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import LocationLayout from '../../components/ao/LocationLayout.astro'
+export const prerender = true;
+
+// Get all locations without any filtering
+const allLocations = await getCollection('ao');
+console.log(allLocations)
+
+---
+
+<LocationLayout
+    locations={allLocations}
+    baseUrl="/ao"
+    title="Locations"
+    subtitle="F3 Kankakee workout locations"
+/>
+

@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import InnerHero from '../sections/InnerHero.astro'
+import Button from '../ui/Button.astro'
+import LocationList from './LocationList.astro'
+
+const seoTitle = "Locations"
+const seoDescription = "F3 Kankakee workout locations"
+
+interface Props {
+    locations: any[];
+    baseUrl: string;  // e.g., '/blog' or '/category/some-category'
+    title: string;
+    subtitle: string;
+    currentCategory?: string;
+}
+
+const {
+    locations,
+    baseUrl,
+    title,
+    subtitle,
+    currentCategory
+} = Astro.props;
+
+const heroContent = {
+    title: title,
+    description: subtitle
+}
+
+---
+<Layout title={seoTitle} description={seoDescription}>
+    <main>
+        <InnerHero content={heroContent} />
+        <LocationList locations={locations} />
+    </main>
+</Layout>

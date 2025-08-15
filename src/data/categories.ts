@@ -1,7 +1,8 @@
 interface Category {
   name: string;
   slug: string;
-  description: string;
+  description?: string;
+  icon?: string;
 }
 
 export const categories: Category[] = [
@@ -40,7 +41,12 @@ export const categories: Category[] = [
     slug: 'seo',
     description: 'Search engine optimization strategies and best practices'
   },
-  
+    {
+        name: 'Bootcamp',
+        slug: 'Bootcamp',
+        icon: 'boot',
+    }
+
 ];
 
 // Helper function to get category by slug

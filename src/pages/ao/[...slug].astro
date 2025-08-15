@@ -1,0 +1,82 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import CategoryPill from '@components/ui/CategoryPill.astro';
+import { getTextColor } from '@utils/styleUtils';
+
+export async function getStaticPaths() {
+    const locations = await getCollection('ao');
+    return locations.map((location) => ({
+        params: { slug: location.id },
+        props: { location },
+    }));
+}
+
+const { location } = Astro.props;
+const { Content } = await render(location);
+
+// Use SEO data from frontmatter if available, fallback to regular post data
+const seoTitle = location.data.seo?.title || location.data.title;
+const seoDescription = location.data.seo?.description || location.data.addressDescription;
+
+const heroTextColor = getTextColor('dark');
+
+// For SEO image, use the seo.image if provided, otherwise use the featured image
+// The Layout component expects a string for the image, so we need to handle that
+let seoImage: string | undefined = location.data.seo?.image;
+---
+
+<Layout title={seoTitle} description={seoDescription} image={seoImage}>
+    <div class="w-full h-120 absolute top-0 left-0 z-0 overflow-hidden border-b border-black">
+        {
+            location.data.featuredImage && (
+                <>
+                    <Image
+                        src={location.data.featuredImage}
+                        alt=""
+                        width={1920}
+                        height={1080}
+                        class="w-full h-full object-cover grayscale opacity-20"
+                        quality={60}
+                    />
+                    <div class="absolute inset-0 bg-primary/10 backdrop-blur-md" />
+                </>
+            )
+        }
+    </div>
+
+    <article class="site-container--small mx-auto px-4 prose relative z-10 pb-base">
+        <div class="mt-42 mb-12 text-center">
+            <h1 class:list={[heroTextColor]}>{location.data.title}</h1>
+            <div class:list={[heroTextColor, "flex items-center justify-center gap-4"]}>
+                {
+                    location.data.categories && (
+                        <div class="flex flex-wrap gap-2">
+                            {location.data.categories.map((category) => (
+                                <CategoryPill category={category} />
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+
+        {
+            location.data.featuredImage && (
+                <Image
+                    src={location.data.featuredImage}
+                    alt=""
+                    width={1200}
+                    height={675}
+                    class="w-full h-auto rounded-lg border mb-12 border-black"
+                    quality={80}
+                    format="webp"
+                />
+            )
+        }
+
+        <div class="mt-8">
+            <Content />
+        </div>
+    </article>
+</Layout>

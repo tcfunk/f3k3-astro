@@ -1,0 +1,42 @@
+---
+import Location from './Location.astro'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+    locations: CollectionEntry<'ao'>[];
+    currentCategory?: string;
+}
+
+const {
+    locations,
+    currentCategory
+} = Astro.props;
+
+---
+<section class="site-container mx-auto px-4 py-base">
+    <div
+        class="mb-16 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6"
+        data-aos="fade-in"
+        data-aos-delay="100"
+    >
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+            locations?.map((ao, index) => (
+                <div>
+                    <Location
+                        title={ao.data.title}
+                        featuredImage={ao.data.featuredImage || ''}
+                        categories={ao.data.categories || []}
+                        address={ao.data.address}
+                        addressDescription={ao.data.addressDescription}
+                        slug={ao.id}
+                        index={index}
+                    />
+                </div>
+            ))
+        }
+    </div>
+
+    {locations.length === 0 && <p class="text-center text-gray-500 py-8">No locations found in this category.</p>}
+</section>
