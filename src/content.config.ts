@@ -60,16 +60,18 @@ const legal = defineCollection({
 
 const ao = defineCollection({
     loader: glob({ base: './src/content/ao', pattern: '**/*.md' }),
-    schema: z.object({
-        title: z.string(),
-        address: z.string(),
-        addressDescription: z.string(),
-        categories: z.array(z.enum(categoryNames as [string, ...string[]])),
-        seo: z.object({
-            title: z.string().optional(),
-            description: z.string().optional(),
-        }).optional()
-    }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            featuredImage: image().optional(),
+            address: z.string(),
+            addressDescription: z.string(),
+            categories: z.array(z.enum(categoryNames as [string, ...string[]])),
+            seo: z.object({
+                title: z.string().optional(),
+                description: z.string().optional(),
+            }).optional()
+        }),
 })
 
 export const collections = { blog, team, legal, ao };

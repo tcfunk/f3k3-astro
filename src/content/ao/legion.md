@@ -1,11 +1,10 @@
 ---
-title: Rivendell
-featuredImage: ./images/rivendell_padded.jpg
+title: Legion
+featuredImage: ./images/legion_padded.jpg
 address: the address
 addressDescription: Kankakee
 categories:
   - Bootcamp
-  - Ruck
 ---
 
 ## Kankakee

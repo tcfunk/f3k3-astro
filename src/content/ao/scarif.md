@@ -1,11 +1,10 @@
 ---
-title: Rivendell
-featuredImage: ./images/rivendell_padded.jpg
+title: Scarif
+featuredImage: ./images/scarif_padded.jpg
 address: the address
 addressDescription: Kankakee
 categories:
   - Bootcamp
-  - Ruck
 ---
 
 ## Kankakee

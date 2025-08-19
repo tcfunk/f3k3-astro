@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import CategoryPill from '@components/ui/CategoryPill.astro';
 import { getTextColor } from '@utils/styleUtils';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
     const locations = await getCollection('ao');
@@ -46,34 +47,36 @@ let seoImage: string | undefined = location.data.seo?.image;
     </div>
 
     <article class="site-container--small mx-auto px-4 prose relative z-10 pb-base">
-        <div class="mt-42 mb-12 text-center">
-            <h1 class:list={[heroTextColor]}>{location.data.title}</h1>
-            <div class:list={[heroTextColor, "flex items-center justify-center gap-4"]}>
-                {
-                    location.data.categories && (
-                        <div class="flex flex-wrap gap-2">
-                            {location.data.categories.map((category) => (
-                                <CategoryPill category={category} />
-                            ))}
-                        </div>
-                    )
-                }
+        <div class="mt-42 mb-12 flex justify-center">
+            {
+                location.data.featuredImage && (
+                    <Image
+                        src={location.data.featuredImage}
+                        alt=""
+                        width={400}
+                        height={400}
+                        class="w-64 h-auto rounded-full mb-12 mr-12"
+                        quality={80}
+                        format="webp"
+                    />
+                )
+            }
+            <div class="flex flex-col justify-center">
+                <h1 class:list={[heroTextColor]}>{location.data.title}</h1>
+                <div class:list={[heroTextColor, "flex items-center justify-center gap-4"]}>
+                    {
+                        location.data.categories && (
+                            <div class="flex flex-wrap gap-2">
+                                {location.data.categories.map((category) => (
+                                    <CategoryPill category={category} />
+                                ))}
+                            </div>
+                        )
+                    }
+                </div>
             </div>
         </div>
 
-        {
-            location.data.featuredImage && (
-                <Image
-                    src={location.data.featuredImage}
-                    alt=""
-                    width={1200}
-                    height={675}
-                    class="w-full h-auto rounded-lg border mb-12 border-black"
-                    quality={80}
-                    format="webp"
-                />
-            )
-        }
 
         <div class="mt-8">
             <Content />

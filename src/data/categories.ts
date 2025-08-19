@@ -1,3 +1,5 @@
+import { Dumbbell, Footprints, Backpack } from "lucide-astro";
+
 interface Category {
   name: string;
   slug: string;
@@ -44,9 +46,18 @@ export const categories: Category[] = [
     {
         name: 'Bootcamp',
         slug: 'Bootcamp',
-        icon: 'boot',
+        icon: Dumbbell
+    },
+    {
+        name: 'Run',
+        slug: 'run',
+        icon: Footprints
+    },
+    {
+        name: 'Ruck',
+        slug: 'ruck',
+        icon: Backpack
     }
-
 ];
 
 // Helper function to get category by slug

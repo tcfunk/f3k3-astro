@@ -284,8 +284,8 @@
         --color-headline: #ffffff;
         --color-headline-light: #ffffff;
         --color-headline-dark: #ffffff;
-        --color-body-base: #333333;
-        --color-body-light: #333333;
+        --color-body-base: #fff;
+        --color-body-light: #fff;
         --color-body-dark: #ffffff;
         --color-eyebrow: #ff4d4d;
         --color-eyebrow-light: #ff4d4d;
@@ -546,6 +546,10 @@ pre[class*="language-"] {
 .line-number {
     color: #888;
     margin-right: 1rem;
+}
+
+.bg-white p {
+    color: var(--color-secondary-dark);
 }
 
 :where(p, li, strong, em, b, i, u, s, a, blockquote, h1, h2, h3, h4, h5, h6)>code:not([class*="language-"]) {

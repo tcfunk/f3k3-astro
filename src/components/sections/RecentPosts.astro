@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPost from '@components/blog/BlogPost.astro';
+import Location from '@components/ao/Location.astro';
 import Button from '@components/ui/Button.astro';
 import Eyebrow from '@components/ui/Eyebrow.astro';
 import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
@@ -37,15 +37,20 @@ const paddingClass = getPaddingClass({
 });
 
 // Fetch posts
-const allPosts = await getCollection('blog', ({ data }) => {
-    return import.meta.env.DEV || data.publish !== false;
-});
+// const  = await getCollection('blog', ({ data }) => {
+//     return import.meta.env.DEV || data.publish !== false;
+// });
+// const allLocations = await getCollection('ao', ({ data }) => {
+//     return import.meta.env.DEV || data.publish === false
+// })
+
+const locations = (await getCollection('ao')).slice(0, 3)
 
 // Filter and sort posts
-let filteredPosts = allPosts
-    .filter((post) => !category || post.data.categories.includes(category))
-    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-    .slice(0, postsToShow);
+// let filteredLocations = allLocations
+    // .filter((post) => !category || post.data.categories.includes(category))
+    // .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+    // .slice(0, postsToShow);
 ---
 
 <section class:list={['relative', bgColor, paddingClass]}>
@@ -77,15 +82,16 @@ let filteredPosts = allPosts
 
         <div class="posts-grid">
             {
-                filteredPosts.map((post, index) => (
+                locations.map((ao, index) => (
                     <div>
-                        <BlogPost
-                            title={post.data.title}
-                            excerpt={post.data.excerpt}
-                            featuredImage={post.data.featuredImage}
-                            publishDate={post.data.publishDate}
-                            categories={post.data.categories || []}
-                            slug={post.id}
+                        <Location
+                            title={ao.data.title}
+                            featuredImage={ao.data.featuredImage}
+                            publishDate={ao.data.publishDate}
+                            categories={ao.data.categories || []}
+                            address={ao.data.address}
+                            addressDescription={ao.data.addressDescription}
+                            slug={ao.id}
                             index={index}
                         />
                     </div>
@@ -93,7 +99,7 @@ let filteredPosts = allPosts
             }
         </div>
 
-        {filteredPosts.length === 0 && <p class="text-center text-gray-500 py-8">No posts found.</p>}
+        {locations.length === 0 && <p class="text-center text-gray-500 py-8">No posts found.</p>}
     </div>
 </section>
 

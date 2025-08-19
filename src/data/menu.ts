@@ -1,9 +1,9 @@
 // src/data/menu.ts
 
 export const headerMenu = [
-    { name: 'Theme Info', link: '/theme-info' },
-    { name: 'Our Team', link: '/team' },
-    { name: 'Blog', link: '/blog' },
+    // { name: 'Theme Info', link: '/theme-info' },
+    // { name: 'Our Team', link: '/team' },
+    // { name: 'Blog', link: '/blog' },
     { name: 'Locations', link: '/ao', showArrow: true,
         children: [
             { name: 'Legion', link: '/ao/legion' },

@@ -1,6 +1,8 @@
 ---
 import { categories } from '../../data/categories';
 import HashtagCategory from '../ui/HashtagCategory.astro';
+import CategoryPill from '../ui/CategoryPill.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
     title: string;
@@ -13,18 +15,20 @@ interface Props {
 }
 
 const {
-    title,
-    slug,
-    index,
     address,
     addressDescription,
     categories: locationCategories,
+    featuredImage,
+    index,
+    slug,
+    title,
 } = Astro.props;
 
 // Validate categories against the valid categories
-const validCategories = locationCategories.filter((categoryName: string) =>
-    categories.some((category) => category.name === categoryName),
+const validCategories = categories.filter((category) =>
+    locationCategories.some((locationCategory) => category.name === locationCategory),
 );
+
 ---
 <a
     href={`/ao/${slug}`}
@@ -33,11 +37,22 @@ const validCategories = locationCategories.filter((categoryName: string) =>
     data-aos-delay={index * 100}
 >
     <div
-        class="relative aspect-[16/9] overflow-hidden border-black border-b group-hover:border-primary transition-colors duration-300"
+        class="relative aspect-[1/1] overflow-hidden bg-black border-black border-b group-hover:border-primary transition-colors duration-300"
     >
+        {
+            featuredImage && (
+                <Image
+                    src={featuredImage}
+                    alt=""
+                    width={600}
+                    height={600}
+                    class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+            )
+        }
     </div>
 
-    <div class="py-4 px-4 flex flex-col flex-grow relative">
+    <div class="pt-4 pb-6 px-4 flex flex-col flex-grow relative">
 
         <h2 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
             {title}
@@ -54,9 +69,9 @@ const validCategories = locationCategories.filter((categoryName: string) =>
         {/* Categories as hashtags at the bottom */}
         <div class="absolute bottom-4 left-4 flex flex-wrap">
             {
-                validCategories.map((categoryName) => (
+                validCategories.map((category) => (
                     <div class="category-tag">
-                        <HashtagCategory category={categoryName} />
+                        <CategoryPill category={category} icon={category} />
                     </div>
                 ))
             }
