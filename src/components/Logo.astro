@@ -1,11 +1,14 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../assets/images/logos/logo black.svg';
+import logoBlack from '../assets/images/logos/logo black.svg';
+import logoWhite from '../assets/images/logos/logo white.svg';
 interface Props {
     variant?: 'header' | 'footer' | 'dark';
 }
 
 const { variant = 'header' } = Astro.props;
+
+const getLogo = (variant: string) => variant == 'header' ? logoBlack : logoWhite;
 
 // Determine the appropriate CSS class based on the variant
 const getLogoClass = () => {
@@ -28,5 +31,5 @@ const getLogoClass = () => {
         // Please, use something like your company name or “Home”, not “logo.”
         // If there is link text, leave alt empty.
     }
-    <Image src={logo} alt="F3 Logo" height={40} class:list={['inline', 'h-12', 'tablet:h-16', 'mr-2']} />
+    <Image src={getLogo(variant)} alt="F3 Logo" height={40} class:list={['inline', 'h-12', 'tablet:h-16', 'mr-2']} />
 </a>

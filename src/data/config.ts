@@ -4,12 +4,12 @@ export const siteConfig = {
   Socials: {
       // xSocial: 'https://x.com/astrodotbuild',
       // Github: 'https://github.com/withastro',
-      Instagram: 'https://www.instagram.com/astrodotbuild',
+      Instagram: 'https://www.instagram.com/f3_kankakee/',
       // LinkedIn: 'https://www.linkedin.com/company/astrodotbuild',
       Facebook: 'https://www.facebook.com/profile.php?id=100090101539613',
       Email: 'support@f3kankakee.com',
-      // Phone: '',
-      // Location: 'Kankakee, Bradley, and Manteno IL',
+      Phone: '',
+      Location: '',
   }
 };
 

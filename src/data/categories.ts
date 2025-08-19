@@ -1,6 +1,5 @@
-import { Dumbbell, Footprints, Backpack } from "lucide-astro";
 
-interface Category {
+export interface Category {
   name: string;
   slug: string;
   description?: string;
@@ -46,21 +45,27 @@ export const categories: Category[] = [
     {
         name: 'Bootcamp',
         slug: 'Bootcamp',
-        icon: Dumbbell
+        // icon: Dumbbell
+        icon: 'ph:boot'
     },
     {
         name: 'Run',
         slug: 'run',
-        icon: Footprints
+        icon: 'ph:person-simple-run',
     },
     {
         name: 'Ruck',
         slug: 'ruck',
-        icon: Backpack
+        // icon: Backpack
+        icon: 'ph:backpack'
     }
 ];
 
 // Helper function to get category by slug
 export function getCategoryBySlug(slug: string): Category | undefined {
   return categories.find(category => category.slug === slug);
+}
+
+export function getCategoryByName(name: string): Category | undefined {
+  return categories.find(category => category.name === name)
 }

@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import CategoryPill from '@components/ui/CategoryPill.astro';
 import { getTextColor } from '@utils/styleUtils';
 import { Image } from 'astro:assets';
+import { getCategoryByName } from '@data/categories';
 
 export async function getStaticPaths() {
     const locations = await getCollection('ao');
@@ -21,6 +22,8 @@ const seoTitle = location.data.seo?.title || location.data.title;
 const seoDescription = location.data.seo?.description || location.data.addressDescription;
 
 const heroTextColor = getTextColor('dark');
+
+const locationCategories = location.data.categories?.map((category: string) => getCategoryByName(category));
 
 // For SEO image, use the seo.image if provided, otherwise use the featured image
 // The Layout component expects a string for the image, so we need to handle that
@@ -46,7 +49,7 @@ let seoImage: string | undefined = location.data.seo?.image;
         }
     </div>
 
-    <article class="site-container--small mx-auto px-4 prose relative z-10 pb-base">
+    <article class="site-container--small mx-auto px-4 prose relative z-10 pb-base bg-background-base text-body-base">
         <div class="mt-42 mb-12 flex justify-center">
             {
                 location.data.featuredImage && (
@@ -63,23 +66,25 @@ let seoImage: string | undefined = location.data.seo?.image;
             }
             <div class="flex flex-col justify-center">
                 <h1 class:list={[heroTextColor]}>{location.data.title}</h1>
-                <div class:list={[heroTextColor, "flex items-center justify-center gap-4"]}>
-                    {
-                        location.data.categories && (
-                            <div class="flex flex-wrap gap-2">
-                                {location.data.categories.map((category) => (
-                                    <CategoryPill category={category} />
-                                ))}
-                            </div>
-                        )
-                    }
-                </div>
             </div>
         </div>
 
-
         <div class="mt-8">
+            <div class:list={[heroTextColor, 'mb-4 flex gap-4']}>
+                {
+                    locationCategories && (
+                        <div class="flex flex-wrap gap-2">
+                            {locationCategories.map((category) => (
+                                <CategoryPill category={category} />
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
             <Content />
         </div>
+    </article>
+    <article class="site-container">
+        <iframe src={location.data.address} width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </article>
 </Layout>

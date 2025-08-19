@@ -62,16 +62,13 @@ const validCategories = categories.filter((category) =>
             class="mt-2 mb-8 text-body-base line-clamp-4 flex-grow text-small group-hover:text-gray-700 transition-colors duration-300"
         >
             {addressDescription}
-            <br />
-            {address}
         </p>
 
-        {/* Categories as hashtags at the bottom */}
         <div class="absolute bottom-4 left-4 flex flex-wrap">
             {
                 validCategories.map((category) => (
                     <div class="category-tag">
-                        <CategoryPill category={category} icon={category} />
+                        <CategoryPill category={category} />
                     </div>
                 ))
             }
