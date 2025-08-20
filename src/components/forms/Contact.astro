@@ -26,15 +26,15 @@ const formBackground = 'base';
         <input type="hidden" name="utf8" value="✓" />
         <input type="hidden" name="subscribe_08b4ff56b5b2_49133" />
 
-        <Input label="Name" id="name" name="name" required background={formBackground} defaultValue="Fakey McFakerson" />
-        <Input label="Email" type="email" id="email" name="email" required background={formBackground} defaultValue='test@test.com' />
-        <Input label="Phone number" id="phone" name="phone" required background={formBackground} defaultValue='123-456-7890' />
+        <Input label="Name" id="name" name="name" required background={formBackground} defaultValue="" />
+        <Input label="Email" type="email" id="email" name="email" required background={formBackground} defaultValue='' />
+        <Input label="Phone number" id="phone" name="phone" required background={formBackground} defaultValue='' />
 
         <Select
             label="Which location are you interested in?"
             id="location"
             name="location"
-            defaultValue='Legion'
+            defaultValue=''
             options={locationOptions}
             background={formBackground} />
 
@@ -42,7 +42,7 @@ const formBackground = 'base';
             label="Message"
             id="message"
             name="message"
-            defaultValue="Hello there! I'm interested in joining your workout cult."
+            defaultValue=""
             required
             background={formBackground} />
 
