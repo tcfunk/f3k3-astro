@@ -8,6 +8,7 @@ interface Props {
     id: string;
     name: string;
     rows?: number;
+    defaultValue?: string;
     placeholder?: string;
     required?: boolean;
     background?: ThemeColor;
@@ -19,13 +20,14 @@ const {
     id, 
     name, 
     rows = 4, 
+    defaultValue = '',
     placeholder = '', 
     required = false,
     background = 'base',
     class: className = ''
 } = Astro.props;
 
-const labelClass = getHeadlineColor(background);
+const labelClass = 'text-inverse'
 const textClass = getTextColor(background);
 const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'base');
 const inputBgClass = getInputBackgroundColor(background);
@@ -55,5 +57,5 @@ const inputTextClass = getInputTextColor(background);
             placeholder:text-body-base/50
             ${className}
         `}
-    ></textarea>
+    >{defaultValue}</textarea>
 </div> 

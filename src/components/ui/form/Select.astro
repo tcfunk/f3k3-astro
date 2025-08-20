@@ -12,6 +12,7 @@ interface Props {
     id: string;
     name: string;
     options: Option[];
+    defaultValue?: string;
     required?: boolean;
     placeholder?: string;
     background?: ThemeColor;
@@ -23,13 +24,15 @@ const {
     id,
     name, 
     options,
+    defaultValue = '',
     required = false,
     placeholder = 'Select an option',
     background = 'base',
     class: className = ''
 } = Astro.props;
 
-const labelClass = getHeadlineColor(background);
+// const labelClass = getHeadlineColor(background);
+const labelClass = 'text-inverse'
 const textClass = getTextColor(background);
 const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'base');
 const inputBgClass = getInputBackgroundColor(background);
@@ -61,7 +64,7 @@ const inputTextClass = getInputTextColor(background);
             {placeholder}
         </option>
         {options.map((option) => (
-            <option value={option.value}>
+            <option value={option.value} selected={option.value == defaultValue}>
                 {option.label}
             </option>
         ))}
