@@ -1,0 +1,13 @@
+---
+import Layout from "@layouts/Layout.astro"
+import InnerHero from "@components/sections/InnerHero.astro"
+
+const heroContent = {
+    title: "About F3",
+    description: "Learn more about F3"
+}
+---
+
+<Layout title="About Us" description="Learn more about F3">
+    <InnerHero content={heroContent} />
+</Layout>
