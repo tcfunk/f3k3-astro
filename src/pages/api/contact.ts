@@ -17,8 +17,6 @@ export const POST: APIRoute = async ({ request }) => {
     })
   }
 
-  console.log(import.meta.env)
-
   // Connect to google sheets api.
   const sheets = google.sheets('v4')
   const auth = new google.auth.GoogleAuth({
