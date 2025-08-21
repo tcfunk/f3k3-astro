@@ -6,7 +6,6 @@ address: https://map.f3nation.com/?locationId=41875
 addressDescription: 1000 N Entrance Ave, Kankakee, IL
 categories:
   - Bootcamp
-  - Ruck
 ---
 
 ## AO Rivendell 
