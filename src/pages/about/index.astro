@@ -1,13 +1,33 @@
 ---
 import Layout from "@layouts/Layout.astro"
 import InnerHero from "@components/sections/InnerHero.astro"
+import Faqs from '@components/sections/Faqs.astro';
+import Features from '@components/sections/Features.astro';
+import { faqLists } from "@data/faqs";
+import { featureLists } from '@data/features';
 
 const heroContent = {
     title: "About F3",
     description: "Learn more about F3"
 }
+
+const faqsSection = {
+    eyebrow: "FAQs",
+    title: 'Frequently Asked Questions',
+    description: 'Find answers to common questions about our platform and services.',
+    faqs: faqLists.main.faqs
+}
+
+const featuresSection = {
+    eyebrow: "CORE PRINCIPLES",
+    title: "F3 was founded on 5 core principles",
+    description: "",
+    features: featureLists.main.features,
+}
 ---
 
 <Layout title="About Us" description="Learn more about F3">
     <InnerHero content={heroContent} />
+    <Features content={featuresSection} padding="base" background="light" />
+    <Faqs content={faqsSection} background="base" padding="base" />
 </Layout>

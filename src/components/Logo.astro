@@ -23,6 +23,8 @@ const getLogoClass = () => {
             return 'text-body-base hover:text-primary';
     }
 };
+
+const getLoading = (variant: string) => variant == 'header' ? 'eager' : 'lazy';
 ---
 
 <a href="/" class:list={['logo uppercase font-logo transition-colors duration-200 font-light', getLogoClass()]}>
@@ -31,5 +33,5 @@ const getLogoClass = () => {
         // Please, use something like your company name or “Home”, not “logo.”
         // If there is link text, leave alt empty.
     }
-    <Image src={getLogo(variant)} alt="F3 Logo" height={40} class:list={['inline', 'h-12', 'tablet:h-16', 'mr-2']} />
+    <Image src={getLogo(variant)}  loading={getLoading(variant)} alt="F3 Logo" height={40} class:list={['inline', 'h-12', 'tablet:h-16', 'mr-2']} />
 </a>

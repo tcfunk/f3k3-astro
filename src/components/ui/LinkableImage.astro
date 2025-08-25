@@ -1,0 +1,11 @@
+---
+import { Image, type LocalImageProps } from 'astro:assets';
+
+type Props = LocalImageProps & {
+  href?: string;
+  target?: string;
+};
+
+const props = Astro.props;
+---
+{props.href ? <a target={props.target} href={props.href}><Image { ...props} /></a> : <Image { ...props} />}

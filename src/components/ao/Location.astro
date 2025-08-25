@@ -14,22 +14,14 @@ interface Props {
     addressDescription: string;
 }
 
-const {
-    address,
-    addressDescription,
-    categories: locationCategories,
-    featuredImage,
-    index,
-    slug,
-    title,
-} = Astro.props;
+const { address, addressDescription, categories: locationCategories, featuredImage, index, slug, title } = Astro.props;
 
 // Validate categories against the valid categories
 const validCategories = categories.filter((category) =>
     locationCategories.some((locationCategory) => category.name === locationCategory),
 );
-
 ---
+
 <a
     href={`/ao/${slug}`}
     class="group flex flex-col h-full overflow-hidden bg-white rounded-lg border border-black transition-all duration-300 hover:border-primary"
@@ -42,6 +34,7 @@ const validCategories = categories.filter((category) =>
         {
             featuredImage && (
                 <Image
+                    loading={'eager'}
                     src={featuredImage}
                     alt=""
                     width={600}
@@ -53,7 +46,6 @@ const validCategories = categories.filter((category) =>
     </div>
 
     <div class="pt-4 pb-6 px-4 flex flex-col flex-grow relative">
-
         <h2 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
             {title}
         </h2>
@@ -73,6 +65,5 @@ const validCategories = categories.filter((category) =>
                 ))
             }
         </div>
-
     </div>
 </a>

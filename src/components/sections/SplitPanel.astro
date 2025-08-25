@@ -3,6 +3,7 @@ import Button from '@components/ui/Button.astro';
 import Eyebrow from '@components/ui/Eyebrow.astro';
 import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
+import LinkableImage from '@components/ui/LinkableImage.astro';
 import { Image } from 'astro:assets';
 
 interface Content {
@@ -13,7 +14,12 @@ interface Content {
     image: {
         src: string | any;
         alt?: string;
+        href?: string;
+        fit?: string;
+        target?: string;
     };
+    imageFit?: string;
+    imageLink?: boolean;
     buttons?: {
         text: string;
         link: string;
@@ -42,8 +48,10 @@ const {
     padding,
 } = Astro.props;
 
+
 const { eyebrow, headline, subheadline, description, image, buttons = [] } = content;
-const { src, alt = '' } = image;
+const { src, alt = '', href = '', target = '_self', fit = 'cover' } = image;
+const imageFitClass = fit == 'contain' ? 'object-contain' : 'object-cover';
 
 const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
 const bgColor = getBackgroundColor(background);
@@ -63,12 +71,14 @@ const textColor = getTextColor(background);
             {
                 imagePosition === 'left' && (
                     <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)] border border-black">
-                        <Image
+                        <LinkableImage
                             {src}
                             {alt}
+                            target={target}
+                            href={href}
                             width={800}
                             height={600}
-                            class="w-full h-full object-cover"
+                            class:list={['w-full h-full', imageFitClass]}
                             quality={80}
                             format="webp"
                         />
@@ -116,16 +126,18 @@ const textColor = getTextColor(background);
             {
                 imagePosition === 'right' && (
                     <div
-                        class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)] border border-black"
+                        class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)]"
                         data-aos="fade-up"
                         data-aos-delay="100"
                     >
-                        <Image
+                        <LinkableImage
                             {src}
                             {alt}
+                            target={target}
+                            href={href}
                             width={800}
                             height={600}
-                            class="w-full h-full object-cover"
+                            class:list={['w-full h-full', imageFitClass]}
                             quality={80}
                             format="webp"
                         />

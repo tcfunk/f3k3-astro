@@ -1,37 +1,58 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import InnerHero from '../sections/InnerHero.astro'
-import Button from '../ui/Button.astro'
-import LocationList from './LocationList.astro'
+import Layout from '../../layouts/Layout.astro';
+import InnerHero from '../sections/InnerHero.astro';
+import SplitPanel from '@components/sections/SplitPanel.astro';
+import LocationList from './LocationList.astro';
 
-const seoTitle = "Locations"
-const seoDescription = "F3 Kankakee workout locations"
+const scheduleImage = '/f3k3schedule.png'
+const seoTitle = 'Locations';
+const seoDescription = 'F3 Kankakee workout locations';
 
 interface Props {
     locations: any[];
-    baseUrl: string;  // e.g., '/blog' or '/category/some-category'
+    baseUrl: string; // e.g., '/blog' or '/category/some-category'
     title: string;
     subtitle: string;
     currentCategory?: string;
 }
 
-const {
-    locations,
-    baseUrl,
-    title,
-    subtitle,
-    currentCategory
-} = Astro.props;
+const { locations, baseUrl, title, subtitle, currentCategory } = Astro.props;
 
 const heroContent = {
     title: title,
-    description: subtitle
-}
+    description: subtitle,
+};
 
+const locationScheduleSection = {
+    eyebrow: "Schedule",
+    headline: "Workout schedule",
+    description: "If you're not sure where to go, check out our schedule here",
+    image: {
+        src: scheduleImage,
+        alt: "F3 Kankakee Workout Schedule",
+        href: scheduleImage,
+        target: 'blank',
+        fit: 'contain'
+    },
+    buttons: [
+        {
+            text: "Download schedule",
+            link: scheduleImage,
+            variant: "primary" as const,
+            target: 'blank'
+        }
+    ]
+}
 ---
+
 <Layout title={seoTitle} description={seoDescription}>
     <main>
         <InnerHero content={heroContent} />
-        <LocationList locations={locations} />
+        <LocationList {locations} />
+        <SplitPanel
+            content={locationScheduleSection}
+            imagePosition="right"
+            background="light"
+            padding="base" />
     </main>
 </Layout>
