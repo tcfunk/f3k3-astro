@@ -3,7 +3,7 @@ import Contact from '@components/forms/Contact.astro';
 import { getBackgroundColor, getTextColor, getPaddingClass } from '@utils/styleUtils';
 import type { ThemeColor, PaddingSize } from '@utils/styleUtils';
 import { siteConfig } from '@data/config';
-import { Mail, Phone, MapPin } from 'lucide-astro';
+import { Icon } from 'astro-icon/components';
 export interface Props {
     content?: {
         title?: string;
@@ -34,23 +34,35 @@ const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
                 <p class:list={[textColor]}>Find us on social media, or fill out the form on this page for more information.</p>
                 <div class:list={['flex flex-col gap-2 mt-4', textColor]}>
                     <div class:list={['flex items-center gap-2']}>
-                        <Mail aria-hidden="true" />
+                        <Icon name="mdi:envelope" />
                         <a href={`mailto:${siteConfig.Socials.Email}`}>{siteConfig.Socials.Email}</a>
                     </div>
                     {
-                        siteConfig.Socials.Phone && (
+                        siteConfig.Socials.Facebook && (
                             <div class:list={['flex items-center gap-2']}>
-                                <Phone aria-hidden="true" />{' '}
-                                <a href={`tel:${siteConfig.Socials.Phone}`}>{siteConfig.Socials.Phone}</a>
+                                <Icon name="mdi:facebook" />
+                                <a href={siteConfig.Socials.Facebook}>
+                                    Facebook
+                                </a>
+                            </div>
+                        )
+                    }
+                    {
+                        siteConfig.Socials.Instagram && (
+                            <div class:list={['flex items-center gap-2']}>
+                                <Icon name="mdi:instagram" />
+                                <a href={siteConfig.Socials.Instagram}>
+                                    Instagram
+                                </a>
                             </div>
                         )
                     }
                     {
                         siteConfig.Socials.Location && (
                             <div class:list={['flex items-center gap-2']}>
-                                <MapPin aria-hidden="true" />
-                                <a href={`https://maps.google.com/?q=${siteConfig.Socials.Location}`}>
-                                    {siteConfig.Socials.Location}
+                                <Icon name="mdi:map-marker" />
+                                <a href={siteConfig.Socials.Location}>
+                                    Location map
                                 </a>
                             </div>
                         )

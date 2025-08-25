@@ -26,3 +26,8 @@ export const legalMenu = [
     { name: 'Terms of Service', link: '/legal/terms-of-service' }
 ];
 
+export const socialMenu = [
+    { name: 'Facebook', link: 'https://www.facebook.com/', icon: 'mdi:facebook' },
+    { name: 'X', link: 'https://twitter.com/', icon: 'mdi:twitter' },
+    { name: 'Instagram', link: 'https://instagram.com/', icon: 'mdi:instagram' },
+];

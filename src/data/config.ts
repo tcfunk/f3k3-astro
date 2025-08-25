@@ -9,7 +9,7 @@ export const siteConfig = {
       Facebook: 'https://www.facebook.com/profile.php?id=100090101539613',
       Email: 'support@f3kankakee.com',
       Phone: '',
-      Location: '',
+      Location: 'https://map.f3nation.com/?lat=41.187542&lng=-87.858517&zoom=13',
   }
 };
 

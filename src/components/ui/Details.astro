@@ -1,6 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components'
 import type { HTMLAttributes } from 'astro/types'
-import { Plus, Minus } from 'lucide-astro'
 
 type Props = HTMLAttributes<'div'> & {
   open?: boolean
@@ -11,8 +11,8 @@ const { open } = Astro.props
     <h3 class="w-full text-left">
         <button class="group w-full flex items-center justify-between cursor-pointer" aria-expanded={!!open}>
             <slot name="heading"/>
-            <Plus class="w-6 h-6 flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110" aria-hidden="true"/>
-            <Minus class="w-6 h-6 flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110" aria-hidden="true"/>
+            <Icon name="mdi:plus" class="w-6 h-6 text-body-base flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110" aria-hidden="true"/>
+            <Icon name="mdi:minus" class="w-6 h-6 text-body-base flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110" aria-hidden="true"/>
         </button>
     </h3>
     <div class="content grid grid-rows-[0fr] transition-all duration-200 ease-out" aria-hidden={!open}>
@@ -25,12 +25,12 @@ const { open } = Astro.props
         display: block;
     }
 
-    titan-details[open] button svg.lucide-plus, titan-details:not([open]) button svg.lucide-minus {
+    titan-details[open] button svg[data-icon="mdi:plus"], titan-details:not([open]) button svg[data-icon="mdi:minus"] {
         display: none;
     }
 
     button:hover svg {
-        color: var(--color-primary-600);
+        color: var(--color-primary-light);
     }
 
     .content {

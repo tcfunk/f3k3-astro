@@ -156,4 +156,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Built with [Astro](https://astro.build)
 - Animations by [AOS](https://michalsnik.github.io/aos/)
-- Icons from [Lucide](https://lucide.dev)

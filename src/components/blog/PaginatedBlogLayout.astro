@@ -3,9 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import BlogList from './BlogList.astro';
 import InnerHero from '../sections/InnerHero.astro';
 import Button from '../ui/Button.astro';
-import { ChevronLeft, ChevronRight } from 'lucide-astro';
 
 import blogHeroImage from '@assets/images/f3-dark.png';
+import { Icon } from 'astro-icon/components';
 
 const seoTitle = "Blog";
 const seoDescription = "Our blog is where we share our thoughts and ideas about the latest trends in the web development industry.";
@@ -56,7 +56,7 @@ const heroContent = {
                 <div class="flex items-center justify-center gap-6">
                     {prevPage && (
                         <Button href={prevPage} variant="primary" class="flex items-center gap-2">
-                            <ChevronLeft size={20} />
+                            <Icon size={20} name="mdi:chevron-left" />
                             Previous
                         </Button>
                     )}
@@ -80,7 +80,7 @@ const heroContent = {
                     {nextPage && (
                         <Button href={nextPage} variant="primary">
                             Next
-                            <ChevronRight size={20} />
+                            <Icon size={20} name="mdi:chevron-right" />
                         </Button>
                     )}
                 </div>

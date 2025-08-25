@@ -1,5 +1,5 @@
 ---
-import { footerMenu, legalMenu, locationMenu } from '@data/menu';
+import { footerMenu, legalMenu, locationMenu, socialMenu } from '@data/menu';
 import Logo from '@components/Logo.astro';
 import Button from '@components/ui/Button.astro';
 import { siteConfig } from '@data/config';
@@ -41,7 +41,7 @@ const currentYear = new Date().getFullYear();
   <div class="site-container mx-auto px-4">
     {!cta.hideCta && (
       <div class="text-center border-b border-background-light mb-12 py-small">
-        <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">{cta.title}</h2>
+        <h2 class="text-3xl mb-4" data-aos="fade-up">{cta.title}</h2>
         <p class="text-white mb-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
           {cta.description}
         </p>
@@ -65,8 +65,11 @@ const currentYear = new Date().getFullYear();
           Leave no man behind, but leave no man where you find him.
         </p>
       </div>
-      <FooterSubmenu title="Quick Links" items={footerMenu} />
-      <FooterSubmenu title="Locations" items={locationMenu} />
+      <div class="col-span-2 flex flex-row justify-between">
+        <FooterSubmenu title="Quick Links" items={footerMenu} />
+        <FooterSubmenu title="Locations" items={locationMenu} />
+        <FooterSubmenu title="Social Media" items={socialMenu} />
+      </div>
     </div>
 
     <div class="mt-8 flex flex-col md:flex-row justify-between items-center">

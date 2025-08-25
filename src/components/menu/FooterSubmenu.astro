@@ -1,27 +1,34 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 interface MenuItem {
-  name: string;
-  link: string;
+    name: string;
+    link: string;
+    icon?: string;
 }
 
 interface Props {
-  title: string;
-  items: MenuItem[];
+    title: string;
+    items: MenuItem[];
 }
 
-const {
-  title,
-  items
-} = Astro.props;
+const { title, items } = Astro.props;
 ---
 
 <div class="col-span-1">
-    <h3 class="text-lg font-semibold mb-4">{title}</h3>
+    <h3 class="text-lg mb-4">{title}</h3>
     <nav>
         <ul class="space-y-2">
-            {items.map(item => (
-              <li><a href={item.link} class="text-body-dark hover:text-white transition-colors">{item.name}</a></li>
-            ))}
+            {
+                items.map((item) => (
+                    <li>
+                        <a href={item.link} class="text-body-dark flex flex-row items-center gap-4 hover:text-white transition-colors justify-start">
+                            {item.icon && <Icon name={item.icon} title={item.name} />}
+                            {item.name}
+                        </a>
+                    </li>
+                ))
+            }
         </ul>
     </nav>
 </div>
