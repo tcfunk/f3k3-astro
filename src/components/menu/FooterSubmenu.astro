@@ -9,10 +9,11 @@ interface MenuItem {
 
 interface Props {
     title: string;
+    target?: string;
     items: MenuItem[];
 }
 
-const { title, items } = Astro.props;
+const { title, target = '_blank', items } = Astro.props;
 ---
 
 <div class="col-span-1">
@@ -22,7 +23,7 @@ const { title, items } = Astro.props;
             {
                 items.map((item) => (
                     <li>
-                        <a href={item.link} class="text-body-dark flex flex-row items-center gap-4 hover:text-white transition-colors justify-start">
+                        <a href={item.link} {target} class="text-body-dark flex flex-row items-center gap-4 hover:text-white transition-colors justify-start">
                             {item.icon && <Icon name={item.icon} title={item.name} />}
                             {item.name}
                         </a>
