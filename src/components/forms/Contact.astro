@@ -6,9 +6,10 @@ import Select from '@components/ui/form/Select.astro';
 
 
 const locationOptions = [
-    { label: 'Legion', value: 'Legion' },
     { label: 'Rivendell', value: 'Rivendell' },
+    { label: 'Legion', value: 'Legion' },
     { label: 'Scarif', value: 'Scarif' },
+    { label: 'Forest', value: 'Forest' },
 ];
 
 const formBackground = 'base';
@@ -79,7 +80,7 @@ contactForm?.addEventListener('submit', async (ev) => {
             <p>Hope to see you soon.</p>
             `;
         parent.appendChild(message)
-        
+
         ev.target.style.display = 'none';
     }
 });
