@@ -4,8 +4,13 @@ featuredImage: ./images/scarif_padded.jpg
 # address: https://maps.app.goo.gl/EeG3Te3wHZvxhVht9
 address: https://map.f3nation.com/?locationId=47677
 addressDescription: 1171 E North St, Bradley, IL 60915
+order: 3
 categories:
   - Bootcamp
+schedule:
+  - day: Friday
+    time: 5:15-6:00 AM
+    type: Bootcamp
 ---
 
 ## AO Scarif

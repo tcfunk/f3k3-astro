@@ -4,8 +4,16 @@ featuredImage: ./images/rivendell_padded.jpg
 # address: https://maps.app.goo.gl/NRG9bgWsqzYtotgS6
 address: https://map.f3nation.com/?locationId=41875
 addressDescription: 1000 N Entrance Ave, Kankakee, IL
+order: 1
 categories:
   - Bootcamp
+schedule:
+  - day: Wednesday
+    time: 5:15-6:00 AM
+    type: Bootcamp
+  - day: Saturday
+    time: 5:15-6:00 AM
+    type: Bootcamp
 ---
 
 ## AO Rivendell 

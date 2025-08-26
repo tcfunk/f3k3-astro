@@ -36,21 +36,11 @@ const paddingClass = getPaddingClass({
     paddingBottom: Astro.props.paddingBottom,
 });
 
-// Fetch posts
-// const  = await getCollection('blog', ({ data }) => {
-//     return import.meta.env.DEV || data.publish !== false;
-// });
-// const allLocations = await getCollection('ao', ({ data }) => {
-//     return import.meta.env.DEV || data.publish === false
-// })
+// Filter and sort locations
+const locations = (await getCollection('ao'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .slice(0, postsToShow)
 
-const locations = (await getCollection('ao')).slice(0, 3)
-
-// Filter and sort posts
-// let filteredLocations = allLocations
-    // .filter((post) => !category || post.data.categories.includes(category))
-    // .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-    // .slice(0, postsToShow);
 
 ---
 
@@ -88,11 +78,11 @@ const locations = (await getCollection('ao')).slice(0, 3)
                         <Location
                             title={ao.data.title}
                             featuredImage={ao.data.featuredImage}
-                            publishDate={ao.data.publishDate}
                             categories={ao.data.categories || []}
                             address={ao.data.address}
                             addressDescription={ao.data.addressDescription}
                             slug={ao.id}
+                            schedule={ao.data.schedule}
                             index={index}
                         />
                     </div>
@@ -100,19 +90,25 @@ const locations = (await getCollection('ao')).slice(0, 3)
             }
         </div>
 
-        {locations.length === 0 && <p class="text-center text-gray-500 py-8">No posts found.</p>}
+        {locations.length === 0 && <p class="text-center text-gray-500 py-8">No locations found.</p>}
     </div>
 </section>
 
 <style>
     .posts-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
         gap: 2rem;
     }
 
     /* Responsive adjustments */
-    @media (max-width: 768px) {
+    @media (max-width: 1151px) {
+        .posts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+    }
+
+    @media (max-width: 512px) {
         .posts-grid {
             grid-template-columns: 1fr;
         }

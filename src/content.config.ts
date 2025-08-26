@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { categories } from '@data/categories';
+import { timerMessage } from 'node_modules/astro/dist/core/logger/core';
 
 // Extract category names for the enum
 const categoryNames = categories.map((category) => category.name);
@@ -48,10 +49,16 @@ const ao = defineCollection({
             address: z.string(),
             addressDescription: z.string(),
             categories: z.array(z.enum(categoryNames as [string, ...string[]])),
+            order: z.number(),
             seo: z.object({
                 title: z.string().optional(),
                 description: z.string().optional(),
-            }).optional()
+            }).optional(),
+            schedule: z.array(z.object({
+                day: z.string(),
+                time: z.string(),
+                type: z.enum(['Bootcamp', 'Run'])
+            })).optional()
         }),
 })
 

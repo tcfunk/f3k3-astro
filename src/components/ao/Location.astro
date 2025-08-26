@@ -1,8 +1,14 @@
 ---
-import { categories } from '../../data/categories';
+import { categories, type Category } from '../../data/categories';
 import HashtagCategory from '../ui/HashtagCategory.astro';
 import CategoryPill from '../ui/CategoryPill.astro';
 import { Image } from 'astro:assets';
+
+interface ScheduleItem {
+    day: string;
+    time: string;
+    type: string;
+}
 
 interface Props {
     title: string;
@@ -12,14 +18,28 @@ interface Props {
     index: number;
     address: string;
     addressDescription: string;
+    schedule?: ScheduleItem[];
 }
 
-const { address, addressDescription, categories: locationCategories, featuredImage, index, slug, title } = Astro.props;
+const {
+    address,
+    addressDescription,
+    categories: locationCategories,
+    featuredImage,
+    index,
+    slug,
+    title,
+    schedule,
+} = Astro.props;
+
 
 // Validate categories against the valid categories
 const validCategories = categories.filter((category) =>
     locationCategories.some((locationCategory) => category.name === locationCategory),
 );
+const typeIcon = (type: string): Category | undefined => {
+    return validCategories.find((category) => category.name === type)
+}
 ---
 
 <a
@@ -56,13 +76,14 @@ const validCategories = categories.filter((category) =>
             {addressDescription}
         </p>
 
-        <div class="absolute bottom-4 left-4 flex flex-wrap">
+        <div class="flex flex-wrap">
             {
-                validCategories.map((category) => (
-                    <div class="category-tag">
-                        <CategoryPill category={category} />
-                    </div>
-                ))
+                schedule &&
+                    schedule.map((item) => (
+                        <CategoryPill
+                            category={typeIcon(item.type)}
+                            description={`${item.day} ${item.time}`} />
+                    ))
             }
         </div>
     </div>

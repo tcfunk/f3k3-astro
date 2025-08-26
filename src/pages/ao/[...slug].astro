@@ -31,7 +31,7 @@ let seoImage: string | undefined = location.data.seo?.image;
 ---
 
 <Layout title={seoTitle} description={seoDescription} image={seoImage}>
-    <div class="w-full h-120 absolute top-0 left-0 z-0 overflow-hidden border-b border-black">
+    <div class="w-full h-140 md:h-120 absolute top-0 left-0 z-0 overflow-hidden border-b border-black">
         {
             location.data.featuredImage && (
                 <>
@@ -50,7 +50,7 @@ let seoImage: string | undefined = location.data.seo?.image;
     </div>
 
     <article class="site-container--small mx-auto px-4 prose relative z-10 pb-base bg-background-base text-body-base">
-        <div class="mt-42 mb-12 flex justify-center">
+        <div class="mt-42 mb-12 flex flex-col md:flex-row justify-center justify-items-center">
             {
                 location.data.featuredImage && (
                     <Image
@@ -58,13 +58,13 @@ let seoImage: string | undefined = location.data.seo?.image;
                         alt=""
                         width={400}
                         height={400}
-                        class="w-64 h-auto rounded-full mb-12 mr-12"
+                        class="w-64 h-auto rounded-full mb-12 mr-0 md:mr-12"
                         quality={80}
                         format="webp"
                     />
                 )
             }
-            <div class="flex flex-col justify-center">
+            <div class="flex flex-row md:flex-col justify-center">
                 <h1 class:list={[heroTextColor]}>{location.data.title}</h1>
             </div>
         </div>
