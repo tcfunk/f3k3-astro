@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@astrojs/vercel": "^8.2.6",
+        "@vercel/analytics": "^1.5.0",
         "@vercel/speed-insights": "^1.2.0",
         "aos": "^2.3.4",
         "astro-icon": "^1.1.5",
