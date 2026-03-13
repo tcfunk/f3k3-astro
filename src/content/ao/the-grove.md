@@ -30,4 +30,4 @@ Bourbonnais, IL
 
 Meet at The Grove park in Bourbonnais. Park on The west side near the hill.
 
-[Google map](https://map.f3nation.com/?eventId=41874&locationId=41875)
+[View on F3 Nation Map](https://map.f3nation.com/?eventId=41874&locationId=41875)

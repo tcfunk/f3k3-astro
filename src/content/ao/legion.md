@@ -30,4 +30,4 @@ Manteno, IL 60950
 
 Meet at the north end of the downtown parking lot.
 
-[Google map](https://maps.app.goo.gl/mdJezYo5z1zvA7XCA)
+[View on F3 Nation Map](https://maps.app.goo.gl/mdJezYo5z1zvA7XCA)

@@ -27,4 +27,4 @@ Bradley, IL 60915
 
 Meet at Lils Park.
 
-[Google map](https://maps.app.goo.gl/EeG3Te3wHZvxhVht9)
+[View on F3 Nation Map](https://maps.app.goo.gl/EeG3Te3wHZvxhVht9)
