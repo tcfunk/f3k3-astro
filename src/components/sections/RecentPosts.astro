@@ -38,6 +38,7 @@ const paddingClass = getPaddingClass({
 
 // Filter and sort locations
 const locations = (await getCollection('ao'))
+    .filter((ao) => ao.data.published !== false)
     .sort((a, b) => a.data.order - b.data.order)
     .slice(0, postsToShow)
 

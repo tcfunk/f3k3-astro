@@ -3,10 +3,9 @@ import { siteConfig } from '@data/config';
 
 
 export const locationMenu = [
-    { name: 'Rivendell', link: '/ao/rivendell' },
+    { name: 'The Grove', link: '/ao/the-grove' },
     { name: 'Legion', link: '/ao/legion' },
     { name: 'Scarif', link: '/ao/scarif' },
-    { name: 'Forest', link: '/ao/forest' },
 ]
 
 export const headerMenu = [

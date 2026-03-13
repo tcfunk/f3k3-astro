@@ -8,10 +8,12 @@ import { getCategoryByName } from '@data/categories';
 
 export async function getStaticPaths() {
     const locations = await getCollection('ao');
-    return locations.map((location) => ({
-        params: { slug: location.id },
-        props: { location },
-    }));
+    return locations
+        .filter((location) => location.data.published !== false)
+        .map((location) => ({
+            params: { slug: location.id },
+            props: { location },
+        }));
 }
 
 const { location } = Astro.props;

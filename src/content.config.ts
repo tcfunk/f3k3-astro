@@ -49,6 +49,7 @@ const ao = defineCollection({
             address: z.string(),
             addressDescription: z.string(),
             categories: z.array(z.enum(categoryNames as [string, ...string[]])),
+            published: z.boolean().optional(),
             order: z.number(),
             seo: z.object({
                 title: z.string().optional(),

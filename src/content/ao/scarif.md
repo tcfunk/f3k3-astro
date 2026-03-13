@@ -4,6 +4,7 @@ featuredImage: ./images/scarif_padded.jpg
 # address: https://maps.app.goo.gl/EeG3Te3wHZvxhVht9
 address: https://map.f3nation.com/?locationId=47677
 addressDescription: 1171 E North St, Bradley, IL 60915
+published: true
 order: 3
 categories:
   - Bootcamp

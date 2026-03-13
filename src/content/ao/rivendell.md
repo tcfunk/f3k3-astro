@@ -1,32 +1,29 @@
 ---
 title: Rivendell
-featuredImage: ./images/rivendell_padded.jpg
-# address: https://maps.app.goo.gl/NRG9bgWsqzYtotgS6
-address: https://map.f3nation.com/?locationId=41875
-addressDescription: 1000 N Entrance Ave, Kankakee, IL
-order: 1
+featuredImage: ./images/f3_logo_dark.png
+address: https://map.f3nation.com/?locationId=49024
+addressDescription: 894 Gettysburg Dr, Bourbonnais, IL
+mapUrl: https://www.google.com/maps/search/?api=1&query=41.1685815,-87.881352
+order: 4
+published: false
 categories:
-  - Bootcamp
+  - Run
 schedule:
-  - day: Wednesday
+  - day: Monday
     time: 5:15-6:00 AM
-    type: Bootcamp
-  - day: Saturday
-    time: 5:15-6:00 AM
-    type: Bootcamp
+    type: Run
+
 ---
 
-## AO Rivendell 
+## Rivendell
 
-Every Wednesday & Saturday @5:15am
+Every Monday @ 5:15am
 
 <address>
-1000 N Entrance Ave
-Kankakee, IL
+894 Gettysburg Dr
+Bourbonnais, IL 60914
 </address>
 
 <br />
 
-Meet at 1000 N Entrance Ave (First Church of the Nazarene) in Kankakee.
-
-[Google map](https://map.f3nation.com/?eventId=47677&locationId=47677)
+[Google map](https://www.google.com/maps/search/?api=1&query=41.1685815,-87.881352)
