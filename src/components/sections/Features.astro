@@ -77,14 +77,15 @@ const paddingClass = getPaddingClass({
             </div>
         )}
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-auto-fit gap-8 auto-rows-fr">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-8 auto-rows-fr">
             {features.map((feature, index) => (
                 <div
                     class:list={[
+                        index === features.length - 1 ? 'col-start-2' : '',
                         "p-6 rounded-lg border border-black",
                         background === 'dark' ? 'bg-background-base/10' : 'bg-background/90',
                         background === 'dark' ? 'text-inverse' : '',
-                        "flex flex-col"
+                        "flex flex-col col-span-2"
                     ]}
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
